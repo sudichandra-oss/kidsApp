@@ -20,8 +20,8 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col w-full max-w-sm gap-4">
-        <Link href="/alphabets" className="block w-full bouncy">
-          <button className="w-full bg-pink-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow kid-shadow-active hover:bg-pink-500 transition-colors">
+        <Link href="/alphabets" className="block w-full bouncy animate-pop-in delay-1">
+          <button className="w-full bg-pink-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow hover:bg-pink-500 transition-colors">
             <div className="flex items-center gap-4">
               <div className="bg-white p-3 rounded-full text-pink-500">
                 <Baseline size={32} />
@@ -34,8 +34,8 @@ export default function Home() {
           </button>
         </Link>
 
-        <Link href="/animals" className="block w-full bouncy">
-          <button className="w-full bg-blue-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow kid-shadow-active hover:bg-blue-500 transition-colors">
+        <Link href="/animals" className="block w-full bouncy animate-pop-in delay-2">
+          <button className="w-full bg-blue-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow hover:bg-blue-500 transition-colors">
             <div className="flex items-center gap-4">
               <div className="bg-white p-3 rounded-full text-blue-500">
                 <Dog size={32} />
@@ -48,8 +48,8 @@ export default function Home() {
           </button>
         </Link>
         
-        <Link href="/free-draw" className="block w-full bouncy">
-          <button className="w-full bg-emerald-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow kid-shadow-active hover:bg-emerald-500 transition-colors">
+        <Link href="/free-draw" className="block w-full bouncy animate-pop-in delay-3">
+          <button className="w-full bg-emerald-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow hover:bg-emerald-500 transition-colors">
             <div className="flex items-center gap-4">
               <div className="bg-white p-3 rounded-full text-emerald-500">
                 <Palette size={32} />
