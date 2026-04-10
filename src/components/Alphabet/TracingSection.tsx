@@ -87,11 +87,11 @@ export default function TracingSection() {
         </button>
       </div>
 
-      <div className="relative">
+      <div className="relative bg-white rounded-[40px] kid-shadow overflow-hidden border-8 border-white p-2">
         <DynamicDrawingCanvas
           key={canvasKey}
-          width={340}
-          height={380}
+          width={380}
+          height={480}
           bgPath={currentLetter.svgPath}
           currentTool={{ toolType: 'pen', color: '#fbbf24', brushSize: 15 }} // Amber color brush
           onStrokeComplete={checkTracing}

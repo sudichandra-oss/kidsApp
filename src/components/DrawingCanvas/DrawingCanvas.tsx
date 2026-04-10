@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { Stage, Layer, Line, Path, Image as KonvaImage } from 'react-konva';
+import { Stage, Layer, Line, Path, Group, Image as KonvaImage } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
 export type ToolProps = {
@@ -83,19 +83,27 @@ export default function DrawingCanvas({
         className="touch-none"
       >
         <Layer>
-          {/* Guide Path (e.g. Dotted Alphabet or Animal Outline) */}
           {bgPath && (
-            <Path
-              data={bgPath}
-              stroke="#cbd5e1" /* Slate 300 */
-              strokeWidth={5}
-              lineCap="round"
-              lineJoin="round"
-              dash={[1, 15]} /* Creates circular dots */
-              scale={{ x: 2, y: 2 }} // Reduced scale so it fits the canvas
-              x={10} // Reduced offset to center it better
-              y={30}
-            />
+            <Group x={10} y={10} scale={{ x: 2.2, y: 2.2 }}>
+              {/* Outer border for the pearls */}
+              <Path
+                data={bgPath}
+                stroke="#475569" /* Slate 600 */
+                strokeWidth={12}
+                lineCap="round"
+                lineJoin="round"
+                dash={[0.1, 18]} 
+              />
+              {/* Inner white center for the pearls */}
+              <Path
+                data={bgPath}
+                stroke="#ffffff"
+                strokeWidth={8}
+                lineCap="round"
+                lineJoin="round"
+                dash={[0.1, 18]} 
+              />
+            </Group>
           )}
 
           {/* User Drawings */}
