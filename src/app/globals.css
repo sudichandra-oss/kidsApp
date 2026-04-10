@@ -19,6 +19,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  background-image: radial-gradient(var(--success) 1px, transparent 1px), radial-gradient(var(--success) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  background-attachment: fixed;
   font-family: var(--font-body);
   margin: 0;
   padding: 0;
@@ -28,12 +32,22 @@ body {
 
 /* Playful utilities */
 .kid-shadow {
-  box-shadow: 0 8px 0 rgba(0,0,0,0.1), 0 15px 30px rgba(0,0,0,0.2);
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.05) 100%);
+  box-shadow: 
+    0 8px 0 rgba(0,0,0,0.15), 
+    0 15px 25px rgba(0,0,0,0.15),
+    inset 0 4px 0 rgba(255,255,255,0.6), 
+    inset 0 -4px 0 rgba(0,0,0,0.1);
   border: 4px solid white;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.kid-shadow-active {
-  box-shadow: 0 2px 0 rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.2);
+.kid-shadow:active, .kid-shadow-active {
+  box-shadow: 
+    0 2px 0 rgba(0,0,0,0.15), 
+    0 5px 10px rgba(0,0,0,0.15),
+    inset 0 2px 0 rgba(255,255,255,0.4), 
+    inset 0 -2px 0 rgba(0,0,0,0.1);
   transform: translateY(6px);
 }
 
@@ -42,11 +56,22 @@ body {
 }
 
 .bouncy:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
+  filter: brightness(1.05);
 }
 
 .bouncy:active {
   transform: scale(0.95);
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 @keyframes tada {
@@ -59,4 +84,13 @@ body {
 
 .animate-tada {
   animation: tada 1s ease-in-out;
+}
+
+@keyframes rainbow-text {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.text-rainbow {
+  animation: rainbow-text 4s linear infinite;
 }

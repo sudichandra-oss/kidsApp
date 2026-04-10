@@ -4,12 +4,16 @@ import { Palette, Baseline, Dog, Star } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 p-6 items-center justify-center space-y-8 bg-gradient-to-b from-[var(--background)] to-[#dcfce7]">
-      <div className="text-center space-y-2 animate-tada">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">
+    <div className="flex flex-col flex-1 p-6 items-center justify-center space-y-8 bg-gradient-to-b from-[var(--background)] to-[#dcfce7] relative overflow-hidden">
+      {/* Decorative floating bg elements */}
+      <div className="absolute top-10 left-10 w-24 h-24 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-50 floating" />
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-50 floating" style={{ animationDelay: '1s' }} />
+
+      <div className="text-center space-y-2 animate-tada z-10">
+        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent drop-shadow-md text-rainbow">
           Kids Learn <br /> & Draw!
         </h1>
-        <div className="flex justify-center items-center gap-2 text-amber-500">
+        <div className="flex justify-center items-center gap-2 text-amber-500 floating rounded-full bg-white/80 px-4 py-2 kid-shadow" style={{ animationDelay: '1.5s' }}>
           <Star className="w-6 h-6 fill-amber-400" />
           <span className="font-bold text-lg text-slate-700">12 Stars</span>
         </div>
