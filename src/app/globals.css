@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f0fdf4; /* Soft green pastel */
+  --foreground: #1e293b; /* Slate 800 */
+  --primary: #f472b6; /* Pink 400 */
+  --secondary: #3b82f6; /* Blue 500 */
+  --accent: #fbbf24; /* Amber 400 */
+  --success: #34d399; /* Emerald 400 */
+  --font-heading: 'Fredoka', 'Inter', sans-serif;
+  --font-body: 'Fredoka', 'Inter', sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  touch-action: none;
+}
+
+/* Playful utilities */
+.kid-shadow {
+  box-shadow: 0 8px 0 rgba(0,0,0,0.1), 0 15px 30px rgba(0,0,0,0.2);
+  border: 4px solid white;
+}
+
+.kid-shadow-active {
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.2);
+  transform: translateY(6px);
+}
+
+.bouncy {
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bouncy:hover {
+  transform: scale(1.05);
+}
+
+.bouncy:active {
+  transform: scale(0.95);
+}
+
+@keyframes tada {
+  0% { transform: scale(1); }
+  10%, 20% { transform: scale(0.9) rotate(-3deg); }
+  30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+  40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.animate-tada {
+  animation: tada 1s ease-in-out;
+}
