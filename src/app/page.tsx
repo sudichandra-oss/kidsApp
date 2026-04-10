@@ -1,6 +1,6 @@
 'use strict';
 import Link from 'next/link';
-import { Palette, Baseline, Dog, Star } from 'lucide-react';
+import { Palette, Baseline, Hash, Star } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -34,15 +34,15 @@ export default function Home() {
           </button>
         </Link>
 
-        <Link href="/animals" className="block w-full bouncy animate-pop-in delay-2">
+        <Link href="/numbers" className="block w-full bouncy animate-pop-in delay-2">
           <button className="w-full bg-blue-400 text-white rounded-3xl p-6 flex items-center justify-between kid-shadow hover:bg-blue-500 transition-colors">
             <div className="flex items-center gap-4">
               <div className="bg-white p-3 rounded-full text-blue-500">
-                <Dog size={32} />
+                <Hash size={32} />
               </div>
               <div className="text-left">
-                <h2 className="text-2xl font-bold">Animals</h2>
-                <p className="text-blue-100 text-sm">Draw & Color</p>
+                <h2 className="text-2xl font-bold">Numbers</h2>
+                <p className="text-blue-100 text-sm">Trace 1 to 50</p>
               </div>
             </div>
           </button>
