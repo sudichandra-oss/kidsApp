@@ -61,7 +61,7 @@ export default function TracingSection() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-md p-4 space-y-6">
+    <div className="flex flex-col items-center w-full max-w-xl p-2 space-y-4">
       <div className="flex w-full justify-between items-center bg-white p-4 rounded-3xl kid-shadow">
         <button 
           onClick={handlePrev} 
@@ -90,8 +90,8 @@ export default function TracingSection() {
       <div className="relative bg-white rounded-[40px] kid-shadow overflow-hidden border-8 border-white p-2">
         <DynamicDrawingCanvas
           key={canvasKey}
-          width={380}
-          height={480}
+          width={400}
+          height={520}
           bgPath={currentLetter.svgPath}
           currentTool={{ toolType: 'pen', color: '#fbbf24', brushSize: 15 }} // Amber color brush
           onStrokeComplete={checkTracing}

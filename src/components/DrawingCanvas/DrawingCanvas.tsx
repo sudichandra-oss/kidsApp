@@ -84,24 +84,33 @@ export default function DrawingCanvas({
       >
         <Layer>
           {bgPath && (
-            <Group x={10} y={10} scale={{ x: 2.2, y: 2.2 }}>
-              {/* Outer border for the pearls */}
+            <Group x={15} y={15} scale={{ x: 2.3, y: 2.3 }}>
+              {/* Solid faint guide line for shape clarity */}
               <Path
                 data={bgPath}
-                stroke="#475569" /* Slate 600 */
-                strokeWidth={12}
+                stroke="#e2e8f0" /* Slate 200 */
+                strokeWidth={4}
                 lineCap="round"
                 lineJoin="round"
-                dash={[0.1, 18]} 
+                opacity={0.6}
               />
-              {/* Inner white center for the pearls */}
+              {/* Outer border for the pearls (Denser & Smaller) */}
               <Path
                 data={bgPath}
-                stroke="#ffffff"
+                stroke="#64748b" /* Slate 500 */
                 strokeWidth={8}
                 lineCap="round"
                 lineJoin="round"
-                dash={[0.1, 18]} 
+                dash={[0.1, 10]} 
+              />
+              {/* Inner white center for the pearls (Denser & Smaller) */}
+              <Path
+                data={bgPath}
+                stroke="#ffffff"
+                strokeWidth={5}
+                lineCap="round"
+                lineJoin="round"
+                dash={[0.1, 10]} 
               />
             </Group>
           )}
