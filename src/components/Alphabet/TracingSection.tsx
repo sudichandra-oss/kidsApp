@@ -24,13 +24,23 @@ export default function TracingSection() {
   }, [currentIndex]);
 
   const speak = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // Cancel currently playing
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.pitch = 1.2; // Kid-friendly pitch
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
+    // Try to play using a high-quality "Agent" TTS model API endpoint 
+    // Uses Google's translation TTS engine which sounds very realistic and model-like.
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=en&client=tw-ob`;
+    const audio = new Audio(url);
+    
+    audio.play().catch((err) => {
+      console.warn("External TTS model failed, falling back to browser synthesis.", err);
+      // Fallback to local synth
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google')));
+        if (preferredVoice) utterance.voice = preferredVoice;
+        window.speechSynthesis.speak(utterance);
+      }
+    });
   };
 
   const handleNext = () => {
@@ -80,8 +90,8 @@ export default function TracingSection() {
       <div className="relative">
         <DynamicDrawingCanvas
           key={canvasKey}
-          width={300}
-          height={300}
+          width={340}
+          height={380}
           bgPath={currentLetter.svgPath}
           currentTool={{ toolType: 'pen', color: '#fbbf24', brushSize: 15 }} // Amber color brush
           onStrokeComplete={checkTracing}

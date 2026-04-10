@@ -22,7 +22,7 @@ interface DrawingCanvasProps {
   height: number;
   currentTool: ToolProps;
   bgPath?: string; // Optional path for dot-tracing
-  onStrokeComplete?: (points: number[]) => void;
+  onStrokeComplete?: (lines: LineData[]) => void;
 }
 
 export default function DrawingCanvas({
@@ -65,7 +65,7 @@ export default function DrawingCanvas({
   const handleMouseUp = () => {
     isDrawing.current = false;
     if (onStrokeComplete && lines.length > 0) {
-      onStrokeComplete(lines[lines.length - 1].points);
+      onStrokeComplete(lines);
     }
   };
 
@@ -88,13 +88,13 @@ export default function DrawingCanvas({
             <Path
               data={bgPath}
               stroke="#cbd5e1" /* Slate 300 */
-              strokeWidth={10}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              dash={[15, 20]} /* Dotted effect */
-              scale={{ x: 3, y: 3 }} // Adjust based on path data scale
-              x={50} // Centering offset
-              y={50}
+              strokeWidth={5}
+              lineCap="round"
+              lineJoin="round"
+              dash={[1, 15]} /* Creates circular dots */
+              scale={{ x: 2, y: 2 }} // Reduced scale so it fits the canvas
+              x={10} // Reduced offset to center it better
+              y={30}
             />
           )}
 

@@ -31,12 +31,20 @@ export default function AnimalSection() {
   }, [currentIndex]);
 
   const speak = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.pitch = 1.4;
-      window.speechSynthesis.speak(utterance);
-    }
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=en&client=tw-ob`;
+    const audio = new Audio(url);
+    
+    audio.play().catch((err) => {
+      console.warn("External TTS model failed, falling back to browser synthesis.", err);
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google')));
+        if (preferredVoice) utterance.voice = preferredVoice;
+        window.speechSynthesis.speak(utterance);
+      }
+    });
   };
 
   const handleNext = () => {
@@ -80,8 +88,8 @@ export default function AnimalSection() {
       <div className="relative">
         <DynamicDrawingCanvas
           key={canvasKey}
-          width={300}
-          height={300}
+          width={340}
+          height={380}
           bgPath={currentAnimal.svgPath}
           currentTool={tool}
         />
